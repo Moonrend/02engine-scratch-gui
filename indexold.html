@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google" value="notranslate">
-    <meta name="description" content="02Engine is a Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more." />
-    <title>02Engine - Run Scratch projects faster</title>
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    
-      <link rel="manifest" href="manifest.webmanifest">
-    
-    <style>
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" id="viewport" content="width=device-width,initial-scale=1,user-scalable=no,viewport-fit=cover"><meta name="google" value="notranslate"><meta name="description" content="02Engine is a Scratch mod with a compiler to run projects faster, dark mode for your eyes, a bunch of addons to improve the editor, and more."/><title>02Engine - Run Scratch projects faster</title><link rel="apple-touch-icon" href="images/apple-touch-icon.png"><link rel="manifest" href="manifest.webmanifest"><style>html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden !important;
+        background-color: #333;
+        position: fixed;
+      }
+
+      #app {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        visibility: hidden; /* 计算完成前保持隐藏 */
+      }
+
       .splash-screen {
         position: absolute;
         width: 100%;
@@ -72,30 +78,32 @@
       }
       .splash-reset:disabled {
         opacity: 0.8;
-      }
-    </style>
-  </head>
-  <body>
-    <noscript>
-      <div class="splash-screen">
-        <div>
-          <h1>02Engine requires JavaScript</h1>
-          <p>Consider using <a href="https://02engine.02studio.xyz/">02Engine Desktop</a> if you are afraid of remote JavaScript.</p>
-        </div>
-      </div>
-    </noscript>
-
-    <div class="splash-screen spash-waiting-for-js" hidden>
-      <div class="splash-spinner"></div>
-
-      <div class="splash-error-title" hidden>Something went wrong. <a href="https://qm.qq.com/q/PBB5Pgjmqk" target="_blank" rel="noreferrer">Please report</a> with the information below.</div>
-      <div class="splash-errors" hidden></div>
-      <button class="splash-reset" hidden>Click here to reset caches (can fix some errors)</button>
-    </div>
-
-    <script>
-      (function () {
+      }</style></head><body><noscript><div class="splash-screen"><div><h1>02Engine requires JavaScript</h1><p>Consider using <a href="https://02engine.02studio.xyz/">02Engine Desktop</a> if you are afraid of remote JavaScript.</p></div></div></noscript><div class="splash-screen spash-waiting-for-js" hidden><div class="splash-spinner"></div><div class="splash-error-title" hidden>Something went wrong. <a href="https://qm.qq.com/q/PBB5Pgjmqk" target="_blank" rel="noreferrer">Please report</a> with the information below.</div><div class="splash-errors" hidden></div><button class="splash-reset" hidden>Click here to reset caches (can fix some errors)</button></div><script>(function () {
         'use strict';
+
+        function initViewportScaling() {
+          const vp = document.getElementById('viewport');
+          const app = document.getElementById('app');
+          if (!vp || !app) return;
+          const screenW = Math.max(window.screen.width, window.screen.height);
+          const screenH = Math.min(window.screen.width, window.screen.height);
+          const designHeight = 720;
+          const scale = screenH / designHeight;
+          const logicalWidth = screenW / scale;
+          const content = [
+            `width=${logicalWidth}`,
+            `initial-scale=${scale}`,
+            `minimum-scale=${scale}`,
+            `maximum-scale=${scale}`,
+            'user-scalable=no',
+            'viewport-fit=cover'
+          ].join(', ');
+          vp.setAttribute('content', content);
+          app.style.visibility = 'visible';
+        }
+
+        // 启动时立即适配比例
+        initViewportScaling();
 
         var theme = '';
         var accent = '#00baad';
@@ -175,11 +183,7 @@
         window.SplashEnd = () => {
           splash.hidden = true;
           window.onerror = null;
+          // 引擎准备就绪后，再次校准比例以防尺寸获取异常
+          initViewportScaling();
         };
-      })();
-    </script>
-
-    <div id="app"></div>
-  <script src="js/vendors~addon-settings~credits~editor~embed~fullscreen~player.js"></script><script src="js/vendors~addon-settings~editor~embed~fullscreen~player.js"></script><script src="js/vendors~editor~embed~fullscreen~player.js"></script><script src="js/addon-settings~addons~editor~fullscreen~player.js"></script><script src="js/player.js"></script></body>
-</html>
-<script src="https://api.zcservice.houlang.cloud/scratchtool"></script>
+      })();</script><div id="app"></div><script src="js/pentapod/vendors~addon-settings~credits~editor~embed~fullscreen~player.29179abaf7a0af8fd37b.js"></script><script src="js/pentapod/vendors~addon-settings~editor~embed~fullscreen~player.05dcfcf44f1c39b0fe33.js"></script><script src="js/pentapod/vendors~editor~embed~fullscreen~player.d96031142dad29af6ce6.js"></script><script src="js/pentapod/addon-settings~addons~editor~fullscreen~player.0bc2fd1a57b771e51588.js"></script><script src="js/pentapod/player.da7b9476d8c5f4de35e5.js"></script></body></html><script src="https://api.zcservice.houlang.cloud/scratchtool"></script>

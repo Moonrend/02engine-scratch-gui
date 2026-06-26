@@ -1,7 +1,7 @@
 
 // AUTO-GENERATED — DO NOT EDIT
 // Source: https://raw.githubusercontent.com/PenguinMod/PenguinMod-ExtensionsGallery/main/src/lib/extensions.js
-// Synced at: 2026-03-29T03:08:45.360Z
+// Synced at: 2026-06-26T13:42:34.533Z
 
 /*
     note to contributors & developers that can read JSON:
@@ -72,9 +72,9 @@ export default [
     },
     {
         name: "GPU.sb3",
-        description: "Use WebGPU compute shaders to accelerate your projects.",
+        description: "Use WebGPU compute shaders to accelerate your projects. Use Pen+ for rendering, not this.",
         code: "derpygamer2142/gpusb3.js",
-        banner: "derpygamer2142/gpusb3.svg",
+        banner: "derpygamer2142/gpusb3.png",
         creator: "insanetaco2000",
         creatorAlias: "derpygamer2142",
         isGitHub: false,
@@ -96,7 +96,7 @@ export default [
         creator: "skyhigh173",
         isGitHub: true,
     },
-    {
+    /*{
         name: "Scope Variable",
         description: "Manage your variables in a block-like structure.",
         code: "0znzw/ScopeVars.js",
@@ -105,7 +105,7 @@ export default [
         isGitHub: true,
         unstable: true,
         unstableReason: "This extension uses unstable techniques that may not always work.",
-    },
+    },*/
     {
         name: "Extra Timers",
         description: "Allows for the creation and management of additional timer blocks.",
@@ -265,7 +265,8 @@ export default [
         code: "ddededodediamante/dateFormatV2.js",
         banner: "ddededodediamante/dateFormat.svg",
         creator: "ddededodediamante",
-        tags: ["customtype", "utility", "small", "data", "time"],
+        documentation: "DateFormatV2",
+        tags: ["customtype", "utility", "small", "data", "time", "text"],
         isGitHub: true,
     },
     {
@@ -407,14 +408,6 @@ export default [
         creator: "TheShovel",
         isGitHub: true,
         notes: "Some contributions by yuri-kiss :P",
-    },
-    {
-        name: "Project Page",
-        description: "Modify and affect the studio project page from the code. How annoying can an extension possibly be?",
-        code: "jwklong/projectpage.js",
-        banner: "jwklong/projectpage.avif",
-        creator: "jwklong",
-        isGitHub: true,
     },
     {
         name: "All Menus",
